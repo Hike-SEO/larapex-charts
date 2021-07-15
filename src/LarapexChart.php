@@ -183,7 +183,7 @@ class LarapexChart
 
     public function setXAxis(array $categories) :LarapexChart
     {
-        $this->xAxis = json_encode($categories);
+        $this->xAxis = json_encode(['type' => $type , 'categories' => $categories]);
         return $this;
     }
     public function setYAxis(array $options) :LarapexChart
