@@ -480,9 +480,7 @@ class LarapexChart
                 'text' => $this->subtitle() ? $this->subtitle() : '',
                 'align' => $this->subtitlePosition() ? $this->subtitlePosition() : '',
             ],
-            'xaxis' => [
-                'categories' => json_decode($this->xAxis()),
-            ],
+            'xaxis' =>  json_decode($this->xAxis()),
             'yaxis' => json_decode($this->yAxis()),            
             'grid' => json_decode($this->grid()),
             'markers' => json_decode($this->markers()),
