@@ -28,6 +28,7 @@ class LarapexChart
     protected $colors;
     protected $horizontal;
     protected $xAxis;
+    protected $yAxis;
     protected $grid;
     protected $markers;
     protected $stroke;
@@ -48,6 +49,7 @@ class LarapexChart
         $this->horizontal = json_encode(['horizontal' => false]);
         $this->colors = json_encode(config('larapex-charts.colors'));
         $this->setXAxis([]);
+        $this->setYAxis([]);
         $this->grid = json_encode(['show' => false]);
         $this->markers = json_encode(['show' => false]);
         $this->toolbar = json_encode(['show' => false]);
@@ -179,9 +181,14 @@ class LarapexChart
         return $this;
     }
 
-    public function setXAxis(array $categories, string $type = 'category') :LarapexChart
-    {   
-        $this->xAxis = json_encode(['type' => $type , 'categories' => $categories]);
+    public function setXAxis(array $categories) :LarapexChart
+    {
+        $this->xAxis = json_encode($categories);
+        return $this;
+    }
+    public function setYAxis(array $options) :LarapexChart
+    {
+        $this->yAxis = json_encode($options);
         return $this;
     }
 
@@ -387,6 +394,13 @@ class LarapexChart
     {
         return $this->xAxis;
     }
+     /**
+     * @return mixed
+     */
+    public function yAxis()
+    {
+        return $this->yAxis;
+    }
 
     /**
      * @return false|string
@@ -469,10 +483,10 @@ class LarapexChart
             'xaxis' => [
                 'categories' => json_decode($this->xAxis()),
             ],
+            'yaxis' => json_decode($this->yAxis()),            
             'grid' => json_decode($this->grid()),
             'markers' => json_decode($this->markers()),
         ];
-
         if($this->labels()) {
             $options['labels'] = $this->labels();
         }
