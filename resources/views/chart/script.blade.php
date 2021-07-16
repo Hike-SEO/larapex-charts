@@ -24,10 +24,8 @@
             text: '{!! $chart->subtitle() !!}',
             align: '{!! $chart->subtitlePosition() !!}'
         },
-        xaxis:  {!! $chart->xAxis() !!},
-        @if($chart->yAxis())
-        yaxis: {!! $chart->yAxis() !!},
-        @endif
+        xaxis: {!! $chart->xAxis() !!},
+        yaxis:  {!! $chart->yAxis() !!},     
         grid: {!! $chart->grid() !!},
         markers: {!! $chart->markers() !!},
         @if($chart->stroke())
@@ -35,7 +33,7 @@
         @endif
     }
 
-    var chart = new ApexCharts(document.querySelector("#{!! $chart->id() !!}"), options);
-    chart.render();
+    var chart{!! $chart->id() !!} = new ApexCharts(document.querySelector("#{!! $chart->id() !!}"), options);
+    chart{!! $chart->id() !!}.render();   
 
 </script>
