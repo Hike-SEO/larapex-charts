@@ -23,7 +23,7 @@ class LarapexChart
     protected $labels;
     protected $fontFamily;
     protected $dataset;
-    protected $height = 500;
+    protected $height = '500';
     protected $width;
     protected $colors;
     protected $horizontal;
@@ -359,9 +359,9 @@ class LarapexChart
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function height() :int
+    public function height() :mixed
     {
         return $this->height;
     }
