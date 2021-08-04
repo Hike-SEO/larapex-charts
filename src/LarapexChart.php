@@ -36,6 +36,7 @@ class LarapexChart
     protected $zoom;
     protected $dataLabels;
     private $chartLetters = 'abcdefghijklmnopqrstuvwxyz';
+    protected $additionalOptions;
 
     /*
     |--------------------------------------------------------------------------
@@ -252,6 +253,12 @@ class LarapexChart
     public function setDataLabels(bool $enabled = true) :LarapexChart
     {
         $this->dataLabels = json_encode(['enabled' => $enabled]);
+        return $this;
+    }
+
+    public function setAdditionalOptions(array $options) :LarapexChart
+    {
+        $this->additionalOptions = $options;
         return $this;
     }
 
@@ -491,6 +498,10 @@ class LarapexChart
 
         if($this->stroke()) {
             $options['stroke'] = json_decode($this->stroke());
+        }
+
+        if($this->additionalOptions){
+            $options = array_replace_recursive($options, $this->additionalOptions);
         }
 
         return response()->json([
