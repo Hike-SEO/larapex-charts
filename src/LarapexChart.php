@@ -368,7 +368,7 @@ class LarapexChart
     /**
      * @return mixed
      */
-    public function height() :mixed
+    public function height()
     {
         return $this->height;
     }
