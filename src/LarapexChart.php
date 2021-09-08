@@ -480,9 +480,6 @@ class LarapexChart
             'colors' => json_decode($this->colors()),
             'series' => json_decode($this->dataset()),
             'dataLabels' => json_decode($this->dataLabels()),
-            'title' => [
-                'text' => $this->title()
-            ],
             'subtitle' => [
                 'text' => $this->subtitle() ? $this->subtitle() : '',
                 'align' => $this->subtitlePosition() ? $this->subtitlePosition() : '',
@@ -492,6 +489,13 @@ class LarapexChart
             'grid' => json_decode($this->grid()),
             'markers' => json_decode($this->markers()),
         ];
+
+        if ($this->title) {
+            $options['title'] = [
+                'text' => $this->title()
+            ];
+        }
+
         if($this->labels()) {
             $options['labels'] = $this->labels();
         }
