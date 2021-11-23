@@ -480,10 +480,11 @@ class LarapexChart
             'colors' => json_decode($this->colors()),
             'series' => json_decode($this->dataset()),
             'dataLabels' => json_decode($this->dataLabels()),
-            'subtitle' => [
+            // TODO: this is passing through null as a string
+            /*'subtitle' => [
                 'text' => $this->subtitle() ? $this->subtitle() : '',
                 'align' => $this->subtitlePosition() ? $this->subtitlePosition() : '',
-            ],
+            ],*/
             'xaxis' =>  json_decode($this->xAxis()),
             'yaxis' => json_decode($this->yAxis()),            
             'grid' => json_decode($this->grid()),
